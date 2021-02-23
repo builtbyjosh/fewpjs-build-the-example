@@ -3,7 +3,31 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+let hearts = document.querySelectorAll('.likes');
 
+let heartFill = {
+  "♡": "♥",
+  "♥": "♡"
+};
+
+let heartColor = {
+  "red" : "",
+  "": "red"
+};
+
+for (let like of likes){
+  like.addEventListener('click', function(e){
+    let heart = e.target;
+    mimicServerCall('url')
+    .then(function(serverMessage){
+      heart.innerText = heartFill[heart.innerText];
+      heart.style.color = heartColor[heart.style.color];
+    })
+    .catch(function(error){
+      document.getElementById('modal').className = "";
+    })
+  })
+}
 
 
 
